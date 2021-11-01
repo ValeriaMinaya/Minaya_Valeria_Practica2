@@ -43,15 +43,16 @@ public class UsuarioArreglo {
     
     public boolean eliminar(Usuario usuario){
         boolean result = false;
-        Usuario temp= new Usuario("","","","","");
+        Usuario temp= new Usuario("","","","",""); // No es necesario
         for (int i = 0; i < this.indice; i++) {
+            // Solo se debe comparar por el atributo identificardor
             if (this.arregloU[i].getDocumento().equals(usuario.getDocumento())&&
                     this.arregloU[i].getMaterno().equals(usuario.getMaterno())&&
                     this.arregloU[i].getPaterno().equals(usuario.getPaterno())&&
                     this.arregloU[i].getTipoDocumento().equals(usuario.getTipoDocumento())){
                 temp = this.arregloU[i];
                 this.arregloU[i] = this.arregloU[this.indice-1];
-                this.arregloU[this.indice-1] = temp;
+                this.arregloU[this.indice-1] = temp; // No es necesario
                 this.indice--;
                 result = true;
             }
@@ -97,7 +98,7 @@ public class UsuarioArreglo {
     }
     
     private void crecerArreglo(){
-        Usuario temp[] = new Usuario[5];
+        Usuario temp[] = new Usuario[5]; // esto solo funiona 1 vez
         temp=arregloU;
         arregloU=new Usuario[this.indice+2];
         for(int i=0;i<this.indice;i++){
@@ -107,7 +108,7 @@ public class UsuarioArreglo {
     
     private boolean estaLleno(){
         boolean result = false;
-        if(this.indice==5){
+        if(this.indice==5){ // que pasa cuando crece el arreglo 
             result=true;
         }
         return result;
